@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.farsheel.statussaver.R
+import com.farsheel.statussaver.utils.Utils
 import kotlinx.android.synthetic.main.activity_image_view.*
 import kotlinx.android.synthetic.main.content_image_view.*
 import java.io.File
@@ -22,6 +23,7 @@ class ImageViewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_image_view)
         setSupportActionBar(toolbar)
+        var status=0
         fab1.visibility=View.GONE;
         fab2.visibility=View.GONE;
 
@@ -37,9 +39,22 @@ class ImageViewActivity : AppCompatActivity() {
 
 
         fab.setOnClickListener(){
-            Toast.makeText(this,"Please select app to share to", Toast.LENGTH_LONG).show()
-            fab1.visibility=View.VISIBLE;
-            fab2.visibility=View.VISIBLE;
+            if(status==0){
+
+                /*Toast.makeText(this,"Please select app to share to", Toast.LENGTH_LONG).show()*/
+                fab1.visibility=View.VISIBLE;
+                fab2.visibility=View.VISIBLE;
+                fab.setImageDrawable(resources.getDrawable(R.drawable.ic_close_black_24dp))
+                var status2=status
+                status=status2+1
+            }
+            else{
+                fab1.visibility=View.GONE;
+                fab2.visibility=View.GONE;
+                fab.setImageDrawable(resources.getDrawable(R.drawable.ic_add_black_24dp))
+                var status2=status
+                status=0
+            }
         }
     }
 
