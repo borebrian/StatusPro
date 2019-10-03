@@ -12,6 +12,7 @@ import com.farsheel.statussaver.R
 import com.farsheel.statussaver.utils.Utils
 import kotlinx.android.synthetic.main.activity_image_view.*
 import kotlinx.android.synthetic.main.content_image_view.*
+import kotlinx.android.synthetic.main.content_image_view.view.*
 import org.apache.commons.io.FileUtils
 import java.io.File
 
@@ -28,12 +29,24 @@ class ImageViewActivity : AppCompatActivity() {
         var status=0
         fab1.visibility=View.GONE;
         fab2.visibility=View.GONE;
+        val imageFile = File(intent.getStringExtra("image"))
 
+
+        if (Utils.isVideoFile(this, imageFile.path)) {
+           fab.visibility=View.GONE
+           fabVideo.visibility=View.VISIBLE
+
+        }
+        else{
+            fab.visibility=View.VISIBLE
+            fabVideo.visibility=View.GONE
+
+        }
         
 
         mScaleGestureDetector = ScaleGestureDetector(this, ScaleListener())
 
-        val imageFile = File(intent.getStringExtra("image"))
+
 
         Glide.with(this)
                 .load(imageFile)

@@ -7,6 +7,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
+import android.support.v4.content.ContextCompat.startActivity
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -162,8 +163,7 @@ class StatusAdapter(private val context: Context) : RecyclerView.Adapter<Recycle
                         .load(Uri.fromFile(File(file.path)))
                         .thumbnail(0.1f)
                         .into(itemView.thumbnailIv)
-                itemView.fab.visibility=View.GONE
-                itemView.fabVideo.visibility=View.VISIBLE
+
 
 
             } else {
@@ -172,8 +172,8 @@ class StatusAdapter(private val context: Context) : RecyclerView.Adapter<Recycle
                 Glide.with(context)
                         .load(file)
                         .into(itemView.thumbnailIv)
-                        itemView.fab.visibility=View.VISIBLE
-                        itemView.fabVideo.visibility=View.GONE
+
+
             }
 
             /*if (file.absolutePath.contains(Utils.WHATSAPP_STATUSES_SAVED_LOCATION)) {
