@@ -1,6 +1,7 @@
 package com.farsheel.statussaver.image
 
 import android.os.Bundle
+import android.os.Environment
 import android.support.v7.app.AppCompatActivity
 import android.view.MotionEvent
 import android.view.ScaleGestureDetector
@@ -11,6 +12,7 @@ import com.farsheel.statussaver.R
 import com.farsheel.statussaver.utils.Utils
 import kotlinx.android.synthetic.main.activity_image_view.*
 import kotlinx.android.synthetic.main.content_image_view.*
+import org.apache.commons.io.FileUtils
 import java.io.File
 
 
@@ -27,6 +29,8 @@ class ImageViewActivity : AppCompatActivity() {
         fab1.visibility=View.GONE;
         fab2.visibility=View.GONE;
 
+        
+
         mScaleGestureDetector = ScaleGestureDetector(this, ScaleListener())
 
         val imageFile = File(intent.getStringExtra("image"))
@@ -35,7 +39,16 @@ class ImageViewActivity : AppCompatActivity() {
                 .load(imageFile)
                 .into(imageView)
 
-
+           fab2.setOnClickListener(){
+               val destFile = File("${Environment.getExternalStorageDirectory()}${Utils.WHATSAPP_STATUSES_SAVED_LOCATION}/${imageFile.name}")
+               FileUtils.copyFile(imageFile, destFile)
+               Utils.addToGallery(this, destFile)
+               Toast.makeText(this, this.getString(R.string.status_saved_to_gallery), Toast.LENGTH_SHORT).show()
+           }
+        fab1.setOnClickListener(){
+            Toast.makeText(this,"Please select app to share to",Toast.LENGTH_LONG).show()
+            Utils.shareFile(this, imageFile)
+        }
 
 
         fab.setOnClickListener(){

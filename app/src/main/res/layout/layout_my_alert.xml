@@ -9,24 +9,24 @@
     <TextView
         android:id="@+id/titleTv"
         android:layout_width="0dp"
-        android:layout_height="159dp"
+        android:layout_height="wrap_content"
         android:text="Title"
+        android:visibility="gone"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
         android:textSize="25sp"
-        android:visibility="gone"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/messageTv"
-        android:layout_width="46dp"
-        android:layout_height="91dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_views"
         android:text="message"
+        android:visibility="gone"
         android:textColor="@color/colorBlack"
         android:textSize="18sp"
-        android:visibility="gone"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/titleTv" />

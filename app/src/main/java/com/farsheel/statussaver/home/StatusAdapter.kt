@@ -19,6 +19,7 @@ import com.farsheel.statussaver.R
 import com.farsheel.statussaver.image.ImageViewActivity
 import com.farsheel.statussaver.utils.Utils
 import com.farsheel.statussaver.video.VideoActivity
+import kotlinx.android.synthetic.main.content_image_view.view.*
 import kotlinx.android.synthetic.main.layout_status_item.view.*
 import org.apache.commons.io.FileUtils
 import java.io.File
@@ -134,10 +135,10 @@ class StatusAdapter(private val context: Context) : RecyclerView.Adapter<Recycle
         init {
 
 
-            Utils.setFonts(fontRegular, itemView.downloadTv, itemView.shareTv)
+            /*Utils.setFonts(fontRegular, itemView.downloadTv, itemView.shareTv)
 
             itemView.downloadTv.setOnClickListener(this)
-            itemView.shareTv.setOnClickListener(this)
+            itemView.shareTv.setOnClickListener(this)*/
             itemView.thumbnailIv.setOnClickListener(this)
         }
 
@@ -161,6 +162,8 @@ class StatusAdapter(private val context: Context) : RecyclerView.Adapter<Recycle
                         .load(Uri.fromFile(File(file.path)))
                         .thumbnail(0.1f)
                         .into(itemView.thumbnailIv)
+                itemView.fab.visibility=View.GONE
+                itemView.fabVideo.visibility=View.VISIBLE
 
 
             } else {
@@ -169,13 +172,15 @@ class StatusAdapter(private val context: Context) : RecyclerView.Adapter<Recycle
                 Glide.with(context)
                         .load(file)
                         .into(itemView.thumbnailIv)
+                        itemView.fab.visibility=View.VISIBLE
+                        itemView.fabVideo.visibility=View.GONE
             }
 
-            if (file.absolutePath.contains(Utils.WHATSAPP_STATUSES_SAVED_LOCATION)) {
+            /*if (file.absolutePath.contains(Utils.WHATSAPP_STATUSES_SAVED_LOCATION)) {
                 itemView.downloadTv.visibility = View.GONE
             } else {
                 itemView.downloadTv.visibility = View.VISIBLE
-            }
+            }*/
         }
 
     }
