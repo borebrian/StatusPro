@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-
+    android:layout_margin="10dp"
     android:elevation="20dp"
     android:layout_marginLeft="5dp"
     android:layout_marginRight="5dp"
@@ -29,8 +29,8 @@
 
         <android.support.v7.widget.AppCompatImageView
             android:id="@+id/playIv"
-            android:layout_width="35dp"
-            android:layout_height="40dp"
+            android:layout_width="28dp"
+            android:layout_height="30dp"
             android:background="@drawable/color_gray_trans_circle"
             android:src="@drawable/ic_play_circle"
             app:layout_constraintBottom_toBottomOf="@id/thumbnailIv"
@@ -56,8 +56,8 @@
 
                 <ImageView
                     android:id="@+id/downloadTv"
-                    android:layout_width="91dp"
-                    android:layout_height="57dp"
+                    android:layout_width="56dp"
+                    android:layout_height="41dp"
                     android:src="@mipmap/download"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/shareTv"
@@ -66,8 +66,8 @@
 
                 <ImageView
                     android:id="@+id/shareTv"
-                    android:layout_width="65dp"
-                    android:layout_height="50dp"
+                    android:layout_width="41dp"
+                    android:layout_height="38dp"
                     android:layout_marginTop="8dp"
 
                     android:layout_marginEnd="8dp"
