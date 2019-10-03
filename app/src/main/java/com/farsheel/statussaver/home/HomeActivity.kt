@@ -72,6 +72,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
               override fun onPreExecute() {
                   super.onPreExecute()
                   mRef.get()?.progress?.showProgress()
+
               }
 
               override fun doInBackground(vararg p0: Int?): ArrayList<File>? {

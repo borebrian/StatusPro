@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.MotionEvent
 import android.view.ScaleGestureDetector
+import android.view.View
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.farsheel.statussaver.R
 import kotlinx.android.synthetic.main.activity_image_view.*
@@ -20,6 +22,8 @@ class ImageViewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_image_view)
         setSupportActionBar(toolbar)
+        fab1.visibility=View.GONE;
+        fab2.visibility=View.GONE;
 
         mScaleGestureDetector = ScaleGestureDetector(this, ScaleListener())
 
@@ -29,7 +33,17 @@ class ImageViewActivity : AppCompatActivity() {
                 .load(imageFile)
                 .into(imageView)
 
+
+
+
+        fab.setOnClickListener(){
+            Toast.makeText(this,"Please select app to share to", Toast.LENGTH_LONG).show()
+            fab1.visibility=View.VISIBLE;
+            fab2.visibility=View.VISIBLE;
+        }
     }
+
+
 
     override fun onTouchEvent(motionEvent: MotionEvent): Boolean {
         mScaleGestureDetector?.onTouchEvent(motionEvent)

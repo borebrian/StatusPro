@@ -76,7 +76,7 @@ class StatusAdapter(private val context: Context) : RecyclerView.Adapter<Recycle
 
             val file = dataList[adapterPosition]
 
-            if (view!!.id == R.id.downloadTv) {
+            if (view!!.id == R.id.fab2) {
                 val destFile = File("${Environment.getExternalStorageDirectory()}${Utils.WHATSAPP_STATUSES_SAVED_LOCATION}/${file.name}")
                 FileUtils.copyFile(file, destFile)
                 Utils.addToGallery(context, destFile)
@@ -86,7 +86,7 @@ class StatusAdapter(private val context: Context) : RecyclerView.Adapter<Recycle
                 onClickDownloadListener.onClickDownload()
             }
 
-            if (view.id == R.id.shareTv) {
+            if (view.id == R.id.fab1) {
 
                 Toast.makeText(context,"Please select app to share to",Toast.LENGTH_LONG).show()
                 Utils.shareFile(context, file)
