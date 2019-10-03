@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">Status Pro</string>
+
+    <string name="admob_app_id">ca-app-pub-7794898756697161~7784506316</string>
+    <string name="admob_interstitial_id">ca-app-pub-7794898756697161/6182283050</string>
+    <string name="admob_banner_id">ca-app-pub-7794898756697161/8981095967</string>
+
+
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_images">Image Status</string>
+    <string name="title_videos">Videos status</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle"> Save Viewed WhatsApp Status </string>
+    <string name="top_bar_text"> Status pro</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="download">Download</string>
+    <string name="share">Share</string>
+    <string name="title_saved">Saved status</string>
+    <string name="status_saved_to_gallery">Status saved to gallery</string>
+    <string name="support">More options</string>
+
+    <string name="rate">Rate app</string>
+    <string name="settings">Settings</string>
+    <string name="help">Help</string>
+    <string name="about">About status pro</string>
+    <string name="title_activity_about">Downloading</string>                    
+    <string name="help_message">
+         Please view the status from your whatsapp first then open status pro and download the status. </string>
+    <string name="version">Version %s</string>
+    <string name="share_app_text">Hey! Checkout this amazing app which helps you to download any WhatsApp Status: %s</string>
+    <string name="no_permission">No permission</string>
+    <string name="require_read_write_external_storage_permissin">This app needs read/write your device storage to work . please allow this permission</string>
+    <string name="allow">Allow</string>
+    <string name="exit">Exit</string>
+    <string name="title_activity_image_view">ImageViewActivity</string>
+
+
+</resources>

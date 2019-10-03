@@ -1,0 +1,91 @@
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:elevation="20dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:padding="5dp"
+        android:background="@drawable/bg_rectangle"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/thumbnailIv"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:adjustViewBounds="true"
+            android:minHeight="200dp"
+            android:scaleType="fitXY"
+            android:transitionName="image"
+            app:layout_constraintBottom_toTopOf="@+id/actionsLayoutCard"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/playIv"
+            android:layout_width="35dp"
+            android:layout_height="40dp"
+            android:background="@drawable/color_gray_trans_circle"
+            android:src="@drawable/ic_play_circle"
+            app:layout_constraintBottom_toBottomOf="@id/thumbnailIv"
+            app:layout_constraintLeft_toLeftOf="@id/thumbnailIv"
+            app:layout_constraintRight_toRightOf="@id/thumbnailIv"
+            app:layout_constraintTop_toTopOf="@id/thumbnailIv"
+            app:tint="@color/colorWhite" />
+
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/actionsLayoutCard"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/thumbnailIv">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_views">
+
+
+                <ImageView
+                    android:id="@+id/downloadTv"
+                    android:layout_width="91dp"
+                    android:layout_height="57dp"
+                    android:src="@mipmap/download"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/shareTv"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <ImageView
+                    android:id="@+id/shareTv"
+                    android:layout_width="65dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="8dp"
+
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:src="@mipmap/share"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/downloadTv"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+            </android.support.constraint.ConstraintLayout>
+
+        </android.support.v7.widget.CardView>
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.v7.widget.CardView>
+
