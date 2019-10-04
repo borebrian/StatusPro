@@ -1,5 +1,6 @@
 package com.borebrian.statussaver.image
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Environment
 import android.support.v7.app.AppCompatActivity
@@ -7,13 +8,17 @@ import android.view.MotionEvent
 import android.view.ScaleGestureDetector
 import android.view.View
 import android.widget.Toast
-import com.bumptech.glide.Glide
 import com.borebrian.statussaver.R
+import com.bumptech.glide.Glide
+
 import com.borebrian.statussaver.utils.Utils
 import kotlinx.android.synthetic.main.activity_image_view.*
 import kotlinx.android.synthetic.main.content_image_view.*
 import org.apache.commons.io.FileUtils
 import java.io.File
+import android.app.WallpaperManager
+
+import android.net.Uri
 
 
 class ImageViewActivity : AppCompatActivity() {
@@ -26,46 +31,27 @@ class ImageViewActivity : AppCompatActivity() {
         setContentView(R.layout.activity_image_view)
         setSupportActionBar(toolbar)
         var status=0
+
+        download.visibility=View.GONE
+        setas.visibility=View.GONE
+        delete.visibility=View.GONE
+        sharestatus.visibility=View.GONE
         val imageFile = File(intent.getStringExtra("image"))
 
-        /*var check= File(intent.getStringExtra("check"))*/
-        
-        //CHECK IF THE IMAGE IS FROM SAVED
 
-        if(imageFile.toString().contains("statusSaver")) {
-           fab.visibility=View.GONE
-            fab1.visibility=View.GONE;
-            fab2.visibility=View.GONE;
-            fabshare.visibility=View.VISIBLE
-
-            intent.putExtra("check",2)
-
-        }
-        else{
-            fab1.visibility=View.GONE;
-            fab2.visibility=View.GONE;
-             fabshare.visibility=View.GONE
-
-        }
-        fabshare.setOnClickListener(){
-            Toast.makeText(this,"Please select app to share to",Toast.LENGTH_LONG).show()
-            Utils.shareFile(this, imageFile)
+        fab4.setOnClickListener(){
+            val intent = Intent(Intent.ACTION_ATTACH_DATA)
+            intent.addCategory(Intent.CATEGORY_DEFAULT)
+            intent.setDataAndType(Uri.fromFile(imageFile), "image/jpeg")
+            intent.putExtra("mimeType", "image/jpeg")
+            this.startActivity(Intent.createChooser(intent, "Set as:"))
         }
 
 
 
 
-        /*if (Utils.isVideoFile(this, imageFile.path)) {
-           fab.visibility=View.GONE
-           fabVideo.visibility=View.VISIBLE
 
-        }
-        else{
-            fab.visibility=View.VISIBLE
-            fabVideo.visibility=View.GONE
 
-        }
-        */
 
         mScaleGestureDetector = ScaleGestureDetector(this, ScaleListener())
 
@@ -88,18 +74,32 @@ class ImageViewActivity : AppCompatActivity() {
 
 
         fab.setOnClickListener(){
-            if(status==0){
+            if(status==0 && imageFile.toString().contains("statusSaver")){
 
                 /*Toast.makeText(this,"Please select app to share to", Toast.LENGTH_LONG).show()*/
-                fab1.visibility=View.VISIBLE;
-                fab2.visibility=View.VISIBLE;
+                sharestatus.visibility=View.VISIBLE;
+                setas.visibility=View.VISIBLE;
+                download.visibility=View.GONE
+                delete.visibility=View.VISIBLE
                 fab.setImageDrawable(resources.getDrawable(R.drawable.ic_close_black_24dp))
                 var status2=status
                 status=status2+1
             }
+            else if(status==0 && imageFile.toString().contains("Statuses")){
+                sharestatus.visibility=View.VISIBLE;
+                setas.visibility=View.VISIBLE;
+                download.visibility=View.VISIBLE
+                delete.visibility=View.GONE
+                fab.setImageDrawable(resources.getDrawable(R.drawable.ic_close_black_24dp))
+                var status2=status
+                status=status2+1
+
+            }
             else{
-                fab1.visibility=View.GONE;
-                fab2.visibility=View.GONE;
+                sharestatus.visibility=View.GONE;
+                setas.visibility=View.GONE;
+                download.visibility=View.GONE
+                delete.visibility=View.GONE
                 fab.setImageDrawable(resources.getDrawable(R.drawable.ic_add_black_24dp))
                 var status2=status
                 status=0
