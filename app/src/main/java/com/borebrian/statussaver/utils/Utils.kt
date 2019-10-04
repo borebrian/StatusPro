@@ -87,7 +87,7 @@ class Utils {
             if (f.exists()) {
                 intentShareFile.type = "image/*"
                 intentShareFile.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://${f.absolutePath}"))
-                intentShareFile.putExtra(Intent.EXTRA_TEXT, "WhatsApp Status Downloaded Via https://play.google.com/store/apps/details?id=${BuildConfig.APPLICATION_ID} ")
+                intentShareFile.putExtra(Intent.EXTRA_TEXT, "Status Pro Downloaded Via https://play.google.com/store/apps/details?id=${BuildConfig.APPLICATION_ID} ")
 
                 context.startActivity(Intent.createChooser(intentShareFile, f.name))
             }

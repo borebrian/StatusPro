@@ -60,6 +60,7 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         downloadVideo.visibility=View.GONE
         deleteVideo.visibility=View.GONE
+        shareVideo.visibility=View.GONE
 
         val imageFile = File(intent.getStringExtra("path"))
         var statusvideo=0;
@@ -74,6 +75,7 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
                 /*Toast.makeText(this,"Please select app to share to", Toast.LENGTH_LONG).show()*/
                 downloadVideo.visibility=View.GONE;
                 deleteVideo.visibility=View.VISIBLE;
+                shareVideo.visibility=View.VISIBLE
                 fabvideo.setImageDrawable(resources.getDrawable(R.drawable.ic_close_black_24dp))
                 var status2video=statusvideo
                 statusvideo=status2video+1
@@ -86,9 +88,9 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
                 fabvideo.setImageDrawable(resources.getDrawable(R.drawable.ic_add_black_24dp))
                 statusvideo=0
             }
-            else{
+            else if(statusvideo==1){
                 deleteVideo.visibility=View.GONE;
-                download.visibility=View.GONE;
+                downloadVideo.visibility=View.GONE;
                 shareVideo.visibility=View.GONE;
                 statusvideo=0
             }
