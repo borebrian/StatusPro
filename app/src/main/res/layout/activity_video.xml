@@ -16,7 +16,9 @@
         android:textSize="50sp"
         android:textStyle="bold"
         android:transitionName="image"
-        app:controller_layout_id="@layout/layout_video_controller" />
+        app:controller_layout_id="@layout/layout_video_controller"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-29dp" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fabvideo"
