@@ -98,7 +98,7 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
             fabvideo.visibility=View.VISIBLE;
 
         }
-          Toast.makeText(this,imageFile.toString(),Toast.LENGTH_LONG).show()
+          /*Toast.makeText(this,imageFile.toString(),Toast.LENGTH_LONG).show()*/
 
         fab2video.setOnClickListener(){
             val destFile = File("${Environment.getExternalStorageDirectory()}${Utils.WHATSAPP_STATUSES_SAVED_LOCATION}/${imageFile.name}")

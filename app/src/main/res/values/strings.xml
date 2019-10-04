@@ -16,7 +16,8 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle"> Save Viewed WhatsApp Status </string>
-    <string name="top_bar_text"> Status pro</string>
+    <string name="top_bar_text"> Status pro \n Developer:Bore Brian</string>
+
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="download">Download</string>
