@@ -31,7 +31,7 @@ class ImageViewActivity : AppCompatActivity() {
         val imageFile = File(intent.getStringExtra("image"))
 
 
-        if (Utils.isVideoFile(this, imageFile.path)) {
+        /*if (Utils.isVideoFile(this, imageFile.path)) {
            fab.visibility=View.GONE
            fabVideo.visibility=View.VISIBLE
 
@@ -41,7 +41,7 @@ class ImageViewActivity : AppCompatActivity() {
             fabVideo.visibility=View.GONE
 
         }
-        
+        */
 
         mScaleGestureDetector = ScaleGestureDetector(this, ScaleListener())
 

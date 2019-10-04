@@ -3,9 +3,11 @@ package com.borebrian.statussaver.video
 import android.annotation.SuppressLint
 import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
 import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import android.widget.Toast
 import com.google.android.exoplayer2.*
 import com.google.android.exoplayer2.source.ExtractorMediaSource
 import com.google.android.exoplayer2.source.TrackGroupArray
@@ -16,7 +18,9 @@ import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.Util
 import com.borebrian.statussaver.R
+import com.borebrian.statussaver.utils.Utils
 import kotlinx.android.synthetic.main.activity_video.*
+import org.apache.commons.io.FileUtils
 import java.io.File
 
 
@@ -51,6 +55,41 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
 
         setContentView(R.layout.activity_video)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+         fab1video.visibility=View.GONE
+        fab2video.visibility=View.GONE
+        val imageFile = File(intent.getStringExtra("path"))
+        var statusvideo=0;
+
+        fabvideo.setOnClickListener(){
+            if(statusvideo==0){
+
+                /*Toast.makeText(this,"Please select app to share to", Toast.LENGTH_LONG).show()*/
+                fab1video.visibility=View.VISIBLE;
+                fab2video.visibility=View.VISIBLE;
+                fabvideo.setImageDrawable(resources.getDrawable(R.drawable.ic_close_black_24dp))
+                var status2video=statusvideo
+                statusvideo=status2video+1
+            }
+            else{
+                fab1video.visibility=View.GONE;
+                fab2video.visibility=View.GONE;
+                fabvideo.setImageDrawable(resources.getDrawable(R.drawable.ic_add_black_24dp))
+                statusvideo=0
+            }
+        }
+        fab2video.setOnClickListener(){
+            val destFile = File("${Environment.getExternalStorageDirectory()}${Utils.WHATSAPP_STATUSES_SAVED_LOCATION}/${imageFile.name}")
+            FileUtils.copyFile(imageFile, destFile)
+            Utils.addToGallery(this, destFile)
+            Toast.makeText(this,"Video stored in gallery", Toast.LENGTH_SHORT).show()
+        }
+        fab1video.setOnClickListener(){
+            Toast.makeText(this,"Please select app to share to",Toast.LENGTH_LONG).show()
+            Utils.shareFile(this, imageFile)
+        }
+
+
+
 
         //overridePendingTransition(R.anim.slide_down, R.anim.slide_up)
 

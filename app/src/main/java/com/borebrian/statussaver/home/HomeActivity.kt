@@ -168,6 +168,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
          if (type == TYPE_SAVED){
 
              parentDir = File(Environment.getExternalStorageDirectory().toString()+ WHATSAPP_STATUSES_SAVED_LOCATION)
+
          }
 
 
