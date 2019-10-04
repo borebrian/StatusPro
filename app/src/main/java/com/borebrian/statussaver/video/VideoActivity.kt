@@ -20,6 +20,7 @@ import com.google.android.exoplayer2.util.Util
 import com.borebrian.statussaver.R
 import com.borebrian.statussaver.utils.Utils
 import kotlinx.android.synthetic.main.activity_video.*
+import kotlinx.android.synthetic.main.content_image_view.*
 import org.apache.commons.io.FileUtils
 import java.io.File
 
@@ -76,6 +77,26 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
                 fabvideo.setImageDrawable(resources.getDrawable(R.drawable.ic_add_black_24dp))
                 statusvideo=0
             }
+
+            if(imageFile.toString().contains("statusSaver")) {
+                fab1video.visibility=View.GONE
+                fab2video.visibility=View.GONE;
+                fabvideo.visibility=View.GONE;
+                fabsharevideo.visibility=View.VISIBLE
+
+
+
+            }
+            else{
+                fabsharevideo.visibility=View.GONE;
+                fab2.visibility=View.GONE;
+                fabvideo.visibility=View.VISIBLE;
+
+            }
+
+
+
+
         }
         fab2video.setOnClickListener(){
             val destFile = File("${Environment.getExternalStorageDirectory()}${Utils.WHATSAPP_STATUSES_SAVED_LOCATION}/${imageFile.name}")

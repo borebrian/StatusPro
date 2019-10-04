@@ -29,7 +29,7 @@ class ImageViewActivity : AppCompatActivity() {
         val imageFile = File(intent.getStringExtra("image"))
 
         /*var check= File(intent.getStringExtra("check"))*/
-        Toast.makeText(this,imageFile.toString(),Toast.LENGTH_LONG).show()
+        
         //CHECK IF THE IMAGE IS FROM SAVED
 
         if(imageFile.toString().contains("statusSaver")) {
