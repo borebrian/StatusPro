@@ -18,6 +18,7 @@ import com.borebrian.statussaver.R
 import com.borebrian.statussaver.image.ImageViewActivity
 import com.borebrian.statussaver.utils.Utils
 import com.borebrian.statussaver.video.VideoActivity
+import kotlinx.android.synthetic.main.content_image_view.view.*
 import kotlinx.android.synthetic.main.layout_status_item.view.*
 import org.apache.commons.io.FileUtils
 import java.io.File
@@ -174,9 +175,10 @@ class StatusAdapter(private val context: Context) : RecyclerView.Adapter<Recycle
             }
 
             /*if (file.absolutePath.contains(Utils.WHATSAPP_STATUSES_SAVED_LOCATION)) {
-                itemView.downloadTv.visibility = View.GONE
+
+
             } else {
-                itemView.downloadTv.visibility = View.VISIBLE
+               
             }*/
         }
 

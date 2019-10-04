@@ -168,7 +168,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
          if (type == TYPE_SAVED){
 
              parentDir = File(Environment.getExternalStorageDirectory().toString()+ WHATSAPP_STATUSES_SAVED_LOCATION)
-
+           
          }
 
 
@@ -287,15 +287,18 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.navigation_images -> {
                 FetchFilesTask(this).execute(TYPE_IMAGE)
                 return@OnNavigationItemSelectedListener true
+                intent.putExtra("check",2)
             }
             R.id.navigation_video -> {
                 FetchFilesTask(this).execute(TYPE_VIDEO)
                 return@OnNavigationItemSelectedListener true
+                intent.putExtra("check",2)
             }
             R.id.navigation_saved -> {
                 FetchFilesTask(this).execute(TYPE_SAVED)
                 return@OnNavigationItemSelectedListener true
                 fab.visibility=View.GONE
+                intent.putExtra("check",1)
             }
         }
         false

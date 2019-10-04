@@ -26,9 +26,33 @@ class ImageViewActivity : AppCompatActivity() {
         setContentView(R.layout.activity_image_view)
         setSupportActionBar(toolbar)
         var status=0
-        fab1.visibility=View.GONE;
-        fab2.visibility=View.GONE;
         val imageFile = File(intent.getStringExtra("image"))
+
+        /*var check= File(intent.getStringExtra("check"))*/
+        Toast.makeText(this,imageFile.toString(),Toast.LENGTH_LONG).show()
+        //CHECK IF THE IMAGE IS FROM SAVED
+
+        if(imageFile.toString().contains("statusSaver")) {
+           fab.visibility=View.GONE
+            fab1.visibility=View.GONE;
+            fab2.visibility=View.GONE;
+            fabshare.visibility=View.VISIBLE
+
+            intent.putExtra("check",2)
+
+        }
+        else{
+            fab1.visibility=View.GONE;
+            fab2.visibility=View.GONE;
+             fabshare.visibility=View.GONE
+
+        }
+        fabshare.setOnClickListener(){
+            Toast.makeText(this,"Please select app to share to",Toast.LENGTH_LONG).show()
+            Utils.shareFile(this, imageFile)
+        }
+
+
 
 
         /*if (Utils.isVideoFile(this, imageFile.path)) {

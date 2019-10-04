@@ -46,13 +46,13 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/thumbnailIv">
 
-         <android.support.constraint.ConstraintLayout
+        <!-- <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_views">
 
 
-               <!-- <ImageView
+               &lt;!&ndash; <ImageView
                     android:id="@+id/downloadTv"
                     android:layout_width="56dp"
                     android:layout_height="41dp"
@@ -60,9 +60,9 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/shareTv"
                     app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent" />-->
+                    app:layout_constraintStart_toStartOf="parent" />&ndash;&gt;
 
-             <ImageView
+            &lt;!&ndash; <ImageView
                  android:id="@+id/shareTv"
                  android:layout_width="41dp"
                  android:layout_height="38dp"
@@ -77,8 +77,8 @@
 
                  app:layout_constraintTop_toTopOf="parent"
 
-                 app:layout_constraintVertical_bias="0.0" />
-            </android.support.constraint.ConstraintLayout>
+                 app:layout_constraintVertical_bias="0.0" />&ndash;&gt;
+            </android.support.constraint.ConstraintLayout>-->
 
         </android.support.v7.widget.CardView>
 
