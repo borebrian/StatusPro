@@ -83,6 +83,7 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
 
 
         }
+
         if(imageFile.toString().contains("statusSaver")) {
             fab1video.visibility=View.GONE
             fab2video.visibility=View.GONE;
@@ -94,10 +95,10 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
         }
         else{
             fabsharevideo.visibility=View.GONE;
-            fab2.visibility=View.GONE;
             fabvideo.visibility=View.VISIBLE;
 
         }
+          Toast.makeText(this,imageFile.toString(),Toast.LENGTH_LONG).show()
 
         fab2video.setOnClickListener(){
             val destFile = File("${Environment.getExternalStorageDirectory()}${Utils.WHATSAPP_STATUSES_SAVED_LOCATION}/${imageFile.name}")
