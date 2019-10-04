@@ -1,6 +1,7 @@
 package com.borebrian.statussaver.video
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
@@ -18,6 +19,7 @@ import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.Util
 import com.borebrian.statussaver.R
+import com.borebrian.statussaver.home.HomeActivity
 import com.borebrian.statussaver.utils.Utils
 import kotlinx.android.synthetic.main.activity_video.*
 import kotlinx.android.synthetic.main.content_image_view.*
@@ -56,25 +58,38 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
 
         setContentView(R.layout.activity_video)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-         fab1video.visibility=View.GONE
-        fab2video.visibility=View.GONE
+        downloadVideo.visibility=View.GONE
+        deleteVideo.visibility=View.GONE
+
         val imageFile = File(intent.getStringExtra("path"))
         var statusvideo=0;
+        fabsharevideo.setOnClickListener(){
+            Toast.makeText(this,"Please select app to share to",Toast.LENGTH_LONG).show()
+            Utils.shareFile(this, imageFile)
+        }
 
         fabvideo.setOnClickListener(){
-            if(statusvideo==0){
+            if(statusvideo==0 && imageFile.toString().contains("statusSaver")){
 
                 /*Toast.makeText(this,"Please select app to share to", Toast.LENGTH_LONG).show()*/
-                fab1video.visibility=View.VISIBLE;
-                fab2video.visibility=View.VISIBLE;
+                downloadVideo.visibility=View.GONE;
+                deleteVideo.visibility=View.VISIBLE;
                 fabvideo.setImageDrawable(resources.getDrawable(R.drawable.ic_close_black_24dp))
                 var status2video=statusvideo
                 statusvideo=status2video+1
             }
-            else{
-                fab1video.visibility=View.GONE;
-                fab2video.visibility=View.GONE;
+            else if (statusvideo==0 && imageFile.toString().contains("Statuses")){
+                deleteVideo.visibility=View.GONE;
+                shareVideo.visibility=View.VISIBLE;
+                downloadVideo.visibility=View.VISIBLE
+
                 fabvideo.setImageDrawable(resources.getDrawable(R.drawable.ic_add_black_24dp))
+                statusvideo=0
+            }
+            else{
+                deleteVideo.visibility=View.GONE;
+                download.visibility=View.GONE;
+                shareVideo.visibility=View.GONE;
                 statusvideo=0
             }
 
@@ -84,7 +99,7 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
 
         }
 
-        if(imageFile.toString().contains("statusSaver")) {
+       /* if(imageFile.toString().contains("statusSaver")) {
             fab1video.visibility=View.GONE
             fab2video.visibility=View.GONE;
             fabvideo.visibility=View.GONE;
@@ -97,7 +112,7 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
             fabsharevideo.visibility=View.GONE;
             fabvideo.visibility=View.VISIBLE;
 
-        }
+        }*/
           /*Toast.makeText(this,imageFile.toString(),Toast.LENGTH_LONG).show()*/
 
         fab2video.setOnClickListener(){
@@ -106,9 +121,26 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
             Utils.addToGallery(this, destFile)
             Toast.makeText(this,"Video stored in gallery", Toast.LENGTH_SHORT).show()
         }
-        fab1video.setOnClickListener(){
-            Toast.makeText(this,"Please select app to share to",Toast.LENGTH_LONG).show()
-            Utils.shareFile(this, imageFile)
+        deletevideo.setOnClickListener(){
+            val fdelete =(imageFile)
+            if (fdelete.exists())
+            {
+                if (fdelete.delete())
+                {
+                    Toast.makeText(this,"Video Deleted successfully from:"+imageFile,Toast.LENGTH_LONG).show()
+                    val intent = Intent(this, HomeActivity::class.java)
+                    startActivity(intent)
+                }
+                else
+                {
+                    Toast.makeText(this,"Video was not deleted!!",Toast.LENGTH_LONG).show();
+                }
+            }
+            else{
+                Toast.makeText(this,"No file to delete",Toast.LENGTH_LONG).show()
+                finish()
+            }
+
         }
 
 
