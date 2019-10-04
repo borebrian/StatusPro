@@ -19,6 +19,7 @@ import java.io.File
 import android.app.WallpaperManager
 
 import android.net.Uri
+import android.support.v7.app.AlertDialog
 
 
 class ImageViewActivity : AppCompatActivity() {
@@ -72,6 +73,34 @@ class ImageViewActivity : AppCompatActivity() {
             Utils.shareFile(this, imageFile)
         }
 
+        fab3.setOnClickListener(){
+            val intent = Intent(Intent.ACTION_ATTACH_DATA)
+            intent.addCategory(Intent.CATEGORY_DEFAULT)
+            intent.setDataAndType(Uri.fromFile(imageFile), "image/jpeg")
+            intent.putExtra("mimeType", "image/jpeg")
+            this.startActivity(Intent.createChooser(intent, "Which app do you want to set wallpaper ?:"))
+        }
+        fab4.setOnClickListener(){
+            val fdelete =(imageFile)
+            if (fdelete.exists())
+            {
+                if (fdelete.delete())
+                {
+                    Toast.makeText(this,"Deleted successfully from:"+imageFile,Toast.LENGTH_LONG).show()
+                }
+                else
+                {
+                    Toast.makeText(this,"file was not deleted!!",Toast.LENGTH_LONG).show();
+                }
+            }
+            else{
+                Toast.makeText(this,"No file to delete",Toast.LENGTH_LONG).show()
+                finish()
+            }
+
+
+
+        }
 
         fab.setOnClickListener(){
             if(status==0 && imageFile.toString().contains("statusSaver")){
@@ -106,7 +135,36 @@ class ImageViewActivity : AppCompatActivity() {
             }
         }
     }
+    override fun onBackPressed()
+    {
+        val builder = AlertDialog.Builder(this)
 
+        // Set the alert dialog title
+        builder.setTitle("Confirm exit")
+
+        // Display a message on alert dialog
+        builder.setMessage("Are you sure you want to exit?")
+        builder.setPositiveButton("Yes"){dialog, which ->
+            // Do something when user press the positive button
+            Toast.makeText(applicationContext,"Ok, Exiting...",Toast.LENGTH_SHORT).show()
+            finish()
+
+            // Change the app background color
+
+        }
+        builder.setNegativeButton("No") { dialog, which ->
+
+        }
+
+        val dialog: AlertDialog = builder.create()
+
+        // Display the alert dialog on app interface
+        dialog.show()
+        super.onBackPressed();
+
+
+
+    }
 
 
     override fun onTouchEvent(motionEvent: MotionEvent): Boolean {
