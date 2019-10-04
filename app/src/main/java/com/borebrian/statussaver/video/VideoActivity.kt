@@ -1,4 +1,4 @@
-package com.farsheel.statuspro.video
+package com.borebrian.statussaver.video
 
 import android.annotation.SuppressLint
 import android.net.Uri
@@ -15,7 +15,7 @@ import com.google.android.exoplayer2.trackselection.TrackSelectionArray
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.Util
-import com.farsheel.statussaver.R
+import com.borebrian.statussaver.R
 import kotlinx.android.synthetic.main.activity_video.*
 import java.io.File
 

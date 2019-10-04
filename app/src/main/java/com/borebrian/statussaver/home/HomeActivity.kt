@@ -1,4 +1,4 @@
-package com.farsheel.statuspro.home
+package com.borebrian.statussaver.home
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -22,18 +22,19 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
 import android.view.MenuItem
 import android.view.View
-import com.farsheel.statussaver.BuildConfig
-import com.farsheel.statussaver.R
-import com.farsheel.statuspro.utils.MyAlert
-import com.farsheel.statuspro.utils.MyProgress
-import com.farsheel.statuspro.utils.Utils
-import com.farsheel.statuspro.utils.Utils.Companion.WHATSAPP_STATUSES_LOCATION
-import com.farsheel.statuspro.utils.Utils.Companion.WHATSAPP_STATUSES_SAVED_LOCATION
+import com.borebrian.statussaver.BuildConfig
+import com.borebrian.statussaver.R
+import com.borebrian.statussaver.utils.MyAlert
+import com.borebrian.statussaver.utils.MyProgress
+import com.borebrian.statussaver.utils.Utils
+import com.borebrian.statussaver.utils.Utils.Companion.WHATSAPP_STATUSES_LOCATION
+import com.borebrian.statussaver.utils.Utils.Companion.WHATSAPP_STATUSES_SAVED_LOCATION
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.InterstitialAd
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.content_home.*
+import kotlinx.android.synthetic.main.content_image_view.*
 import org.apache.commons.io.comparator.LastModifiedFileComparator
 import java.io.File
 import java.lang.ref.WeakReference
@@ -51,7 +52,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     }
 
-    private lateinit var progress: MyProgress
+    private lateinit var progress:MyProgress
 
     private lateinit var mInterstitialAd: InterstitialAd
 
@@ -63,7 +64,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         private const val TYPE_IMAGE = 13
         private const val TYPE_SAVED = 15
 
-          class FetchFilesTask(activity: HomeActivity) : AsyncTask<Int, Int, ArrayList<File>>() {
+          class FetchFilesTask(activity:HomeActivity) : AsyncTask<Int, Int, ArrayList<File>>() {
 
               private val mRef: WeakReference<HomeActivity> = WeakReference(activity)
 
@@ -95,7 +96,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
 
-    private lateinit var statusAdapter: StatusAdapter
+    private lateinit var statusAdapter:StatusAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -193,6 +194,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 if (type == TYPE_SAVED){
 
                     fetchedFiles.add(file)
+                    
                 }
 
 
@@ -223,7 +225,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 showAbout()
             }
             R.id.nav_rate -> {
-                rateApp()
+               /* rateApp()*/
             }
             R.id.nav_help -> {
                 showHelp()
@@ -292,6 +294,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.navigation_saved -> {
                 FetchFilesTask(this).execute(TYPE_SAVED)
                 return@OnNavigationItemSelectedListener true
+                fab.visibility=View.GONE
             }
         }
         false

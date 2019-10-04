@@ -1,4 +1,4 @@
-package com.farsheel.statuspro
+package com.borebrian.statussaver
 
 class Config {
 

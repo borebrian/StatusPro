@@ -1,4 +1,4 @@
-package com.farsheel.statuspro.image
+package com.borebrian.statussaver.image
 
 import android.os.Bundle
 import android.os.Environment
@@ -8,8 +8,8 @@ import android.view.ScaleGestureDetector
 import android.view.View
 import android.widget.Toast
 import com.bumptech.glide.Glide
-import com.farsheel.statussaver.R
-import com.farsheel.statuspro.utils.Utils
+import com.borebrian.statussaver.R
+import com.borebrian.statussaver.utils.Utils
 import kotlinx.android.synthetic.main.activity_image_view.*
 import kotlinx.android.synthetic.main.content_image_view.*
 import org.apache.commons.io.FileUtils

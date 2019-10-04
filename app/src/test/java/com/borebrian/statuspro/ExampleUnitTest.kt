@@ -1,4 +1,4 @@
-package com.farsheel.bore
+package com.borebrian.statuspro
 
 import org.junit.Test
 

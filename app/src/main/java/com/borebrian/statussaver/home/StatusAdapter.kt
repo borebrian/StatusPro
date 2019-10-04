@@ -1,4 +1,4 @@
-package com.farsheel.statuspro.home
+package com.borebrian.statussaver.home
 
 import android.app.Activity
 import android.app.ActivityOptions
@@ -14,10 +14,10 @@ import android.view.ViewGroup
 import android.view.animation.AlphaAnimation
 import android.widget.Toast
 import com.bumptech.glide.Glide
-import com.farsheel.statussaver.R
-import com.farsheel.statuspro.image.ImageViewActivity
-import com.farsheel.statuspro.utils.Utils
-import com.farsheel.statuspro.video.VideoActivity
+import com.borebrian.statussaver.R
+import com.borebrian.statussaver.image.ImageViewActivity
+import com.borebrian.statussaver.utils.Utils
+import com.borebrian.statussaver.video.VideoActivity
 import kotlinx.android.synthetic.main.layout_status_item.view.*
 import org.apache.commons.io.FileUtils
 import java.io.File
