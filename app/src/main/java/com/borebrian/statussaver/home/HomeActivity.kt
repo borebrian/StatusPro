@@ -18,10 +18,12 @@ import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import com.borebrian.statussaver.BuildConfig
 import com.borebrian.statussaver.R
 import com.borebrian.statussaver.utils.MyAlert
@@ -211,7 +213,36 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
             drawer_layout.closeDrawer(GravityCompat.START)
         } else {
-            super.onBackPressed()
+            val builder = AlertDialog.Builder(this)
+
+            // Set the alert dialog title
+            builder.setTitle("Confirm exit")
+
+            // Display a message on alert dialog
+            builder.setMessage("Are you sure you want to exit?")
+            builder.setPositiveButton("Yes"){dialog, which ->
+                // Do something when user press the positive button
+                Toast.makeText(applicationContext,"Ok, Exiting...", Toast.LENGTH_SHORT).show()
+                finish()
+
+                // Change the app background color
+
+            }
+            builder.setNegativeButton("No") { dialog, which ->
+
+            }
+
+            val dialog: AlertDialog = builder.create()
+
+            // Display the alert dialog on app interface
+            dialog.show()
+
+
+
+
+
+
+            
         }
     }
 

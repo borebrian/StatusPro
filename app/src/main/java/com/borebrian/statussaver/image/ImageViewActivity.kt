@@ -20,6 +20,7 @@ import android.app.WallpaperManager
 
 import android.net.Uri
 import android.support.v7.app.AlertDialog
+import com.borebrian.statussaver.home.HomeActivity
 
 
 class ImageViewActivity : AppCompatActivity() {
@@ -86,7 +87,9 @@ class ImageViewActivity : AppCompatActivity() {
             {
                 if (fdelete.delete())
                 {
-                    Toast.makeText(this,"Deleted successfully from:"+imageFile,Toast.LENGTH_LONG).show()
+                    Toast.makeText(this,"Status Deleted successfully from:"+imageFile,Toast.LENGTH_LONG).show()
+                    val intent = Intent(this, HomeActivity::class.java)
+                    startActivity(intent)
                 }
                 else
                 {
@@ -135,36 +138,7 @@ class ImageViewActivity : AppCompatActivity() {
             }
         }
     }
-    override fun onBackPressed()
-    {
-        val builder = AlertDialog.Builder(this)
 
-        // Set the alert dialog title
-        builder.setTitle("Confirm exit")
-
-        // Display a message on alert dialog
-        builder.setMessage("Are you sure you want to exit?")
-        builder.setPositiveButton("Yes"){dialog, which ->
-            // Do something when user press the positive button
-            Toast.makeText(applicationContext,"Ok, Exiting...",Toast.LENGTH_SHORT).show()
-            finish()
-
-            // Change the app background color
-
-        }
-        builder.setNegativeButton("No") { dialog, which ->
-
-        }
-
-        val dialog: AlertDialog = builder.create()
-
-        // Display the alert dialog on app interface
-        dialog.show()
-        super.onBackPressed();
-
-
-
-    }
 
 
     override fun onTouchEvent(motionEvent: MotionEvent): Boolean {
