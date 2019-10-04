@@ -1,4 +1,4 @@
-package com.farsheel.statussaver.home
+package com.farsheel.statuspro.home
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -20,19 +20,17 @@ import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.LinearLayoutManager
 import android.view.MenuItem
 import android.view.View
 import com.farsheel.statussaver.BuildConfig
 import com.farsheel.statussaver.R
-import com.farsheel.statussaver.utils.MyAlert
-import com.farsheel.statussaver.utils.MyProgress
-import com.farsheel.statussaver.utils.Utils
-import com.farsheel.statussaver.utils.Utils.Companion.WHATSAPP_STATUSES_LOCATION
-import com.farsheel.statussaver.utils.Utils.Companion.WHATSAPP_STATUSES_SAVED_LOCATION
+import com.farsheel.statuspro.utils.MyAlert
+import com.farsheel.statuspro.utils.MyProgress
+import com.farsheel.statuspro.utils.Utils
+import com.farsheel.statuspro.utils.Utils.Companion.WHATSAPP_STATUSES_LOCATION
+import com.farsheel.statuspro.utils.Utils.Companion.WHATSAPP_STATUSES_SAVED_LOCATION
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.InterstitialAd
-import com.google.android.gms.ads.MobileAds
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.content_home.*
@@ -53,7 +51,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     }
 
-    private lateinit var progress:MyProgress
+    private lateinit var progress: MyProgress
 
     private lateinit var mInterstitialAd: InterstitialAd
 
@@ -97,7 +95,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
 
-    private lateinit var statusAdapter:StatusAdapter
+    private lateinit var statusAdapter: StatusAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

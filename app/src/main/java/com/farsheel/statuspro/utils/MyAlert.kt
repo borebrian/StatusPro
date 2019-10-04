@@ -1,4 +1,4 @@
-package com.farsheel.statussaver.utils
+package com.farsheel.statuspro.utils
 
 
 import android.app.AlertDialog
@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 
 
-import com.farsheel.statussaver.MyApplication.Companion.fontRegular
+import com.farsheel.statuspro.MyApplication.Companion.fontRegular
 import com.farsheel.statussaver.R
 import kotlinx.android.synthetic.main.layout_my_alert.view.*
 
@@ -32,34 +32,34 @@ class MyAlert(private var context: Context) {
 
     private fun initViews() {
 
-        Utils.setFonts(fontRegular,view.cancelBtn,view.okBtn,view.titleTv,view.messageTv)
+        Utils.setFonts(fontRegular, view.cancelBtn, view.okBtn, view.titleTv, view.messageTv)
     }
 
-    fun setCancelable(isCancelable: Boolean):MyAlert{
+    fun setCancelable(isCancelable: Boolean): MyAlert {
         alertBuilder.setCancelable(isCancelable)
         return this
     }
 
-    fun setMessage(message: Spannable):MyAlert{
+    fun setMessage(message: Spannable): MyAlert {
         view.messageTv.visibility = View.VISIBLE
         view.messageTv.text = message
         return this
     }
 
 
-    fun setMessage(message: String):MyAlert{
+    fun setMessage(message: String): MyAlert {
         view.messageTv.visibility = View.VISIBLE
         view.messageTv.text = message
         return this
     }
 
-    fun setTitle(title: String):MyAlert{
+    fun setTitle(title: String): MyAlert {
         view.titleTv.visibility = View.VISIBLE
         view.titleTv.text = title
         return this
     }
 
-    fun setOkButton(title: String,listener: View.OnClickListener?):MyAlert{
+    fun setOkButton(title: String,listener: View.OnClickListener?): MyAlert {
         view.okBtn.visibility = View.VISIBLE
         view.okBtn.text = title
         view.okBtn.setOnClickListener { view ->
@@ -70,7 +70,7 @@ class MyAlert(private var context: Context) {
         return this
     }
 
-    fun setCancelButton(title: String, listener: View.OnClickListener?):MyAlert{
+    fun setCancelButton(title: String, listener: View.OnClickListener?): MyAlert {
         view.cancelBtn.visibility = View.VISIBLE
         view.cancelBtn.text = title
         view.cancelBtn.setOnClickListener { view ->
@@ -84,7 +84,7 @@ class MyAlert(private var context: Context) {
 
     companion object {
         fun create(context: Context): MyAlert {
-            return  MyAlert(context)
+            return MyAlert(context)
         }
     }
 

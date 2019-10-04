@@ -1,4 +1,4 @@
-package com.farsheel.statussaver.utils
+package com.farsheel.statuspro.utils
 
 import android.content.ContentResolver
 import android.content.Context

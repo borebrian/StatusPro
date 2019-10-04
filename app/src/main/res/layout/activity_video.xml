@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#07090a"
-    tools:context=".video.VideoActivity">
+    tools:context="com.farsheel.statuspro.video.VideoActivity">
 
 
     <com.google.android.exoplayer2.ui.PlayerView

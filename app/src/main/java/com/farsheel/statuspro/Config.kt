@@ -1,4 +1,4 @@
-package com.farsheel.statussaver
+package com.farsheel.statuspro
 
 class Config {
 

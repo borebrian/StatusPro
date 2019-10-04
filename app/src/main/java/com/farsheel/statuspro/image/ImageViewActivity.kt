@@ -1,4 +1,4 @@
-package com.farsheel.statussaver.image
+package com.farsheel.statuspro.image
 
 import android.os.Bundle
 import android.os.Environment
@@ -9,10 +9,9 @@ import android.view.View
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.farsheel.statussaver.R
-import com.farsheel.statussaver.utils.Utils
+import com.farsheel.statuspro.utils.Utils
 import kotlinx.android.synthetic.main.activity_image_view.*
 import kotlinx.android.synthetic.main.content_image_view.*
-import kotlinx.android.synthetic.main.content_image_view.view.*
 import org.apache.commons.io.FileUtils
 import java.io.File
 

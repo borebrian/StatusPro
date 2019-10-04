@@ -1,4 +1,4 @@
-package com.farsheel.statussaver.video
+package com.farsheel.statuspro.video
 
 import android.annotation.SuppressLint
 import android.net.Uri

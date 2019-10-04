@@ -1,4 +1,4 @@
-package com.farsheel.statussaver.home
+package com.farsheel.statuspro.home
 
 import android.app.Activity
 import android.app.ActivityOptions
@@ -7,7 +7,6 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
-import android.support.v4.content.ContextCompat.startActivity
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -15,12 +14,10 @@ import android.view.ViewGroup
 import android.view.animation.AlphaAnimation
 import android.widget.Toast
 import com.bumptech.glide.Glide
-import com.farsheel.statussaver.MyApplication.Companion.fontRegular
 import com.farsheel.statussaver.R
-import com.farsheel.statussaver.image.ImageViewActivity
-import com.farsheel.statussaver.utils.Utils
-import com.farsheel.statussaver.video.VideoActivity
-import kotlinx.android.synthetic.main.content_image_view.view.*
+import com.farsheel.statuspro.image.ImageViewActivity
+import com.farsheel.statuspro.utils.Utils
+import com.farsheel.statuspro.video.VideoActivity
 import kotlinx.android.synthetic.main.layout_status_item.view.*
 import org.apache.commons.io.FileUtils
 import java.io.File
