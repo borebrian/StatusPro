@@ -80,21 +80,20 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
                 deleteVideo.visibility=View.VISIBLE;
                 shareVideo.visibility=View.VISIBLE
                 fabvideo.setImageDrawable(resources.getDrawable(R.drawable.ic_close_black_24dp))
-                status2video=statusvideo
-                statusvideo=status2video+1
+
+                statusvideo=1
             }
             else if (statusvideo==0 && imageFile.toString().contains("Statuses")){
                 deleteVideo.visibility=View.GONE;
                 shareVideo.visibility=View.VISIBLE;
                 downloadVideo.visibility=View.VISIBLE
-                fabvideo.setImageDrawable(resources.getDrawable(R.drawable.ic_add_black_24dp))
-                statusvideo=0
+                fabvideo.setImageDrawable(resources.getDrawable(R.drawable.ic_close_black_24dp))
+                statusvideo=1
             }
             else if(statusvideo==1){
                 deleteVideo.visibility=View.GONE;
                 downloadVideo.visibility=View.GONE;
-                shareVideo.visibility=View.GONE;
-                status2video=0;
+                shareVideo.visibility=View.GONE
                 statusvideo=0;
                 fabvideo.setImageDrawable(resources.getDrawable(R.drawable.ic_add_black_24dp))
             }
