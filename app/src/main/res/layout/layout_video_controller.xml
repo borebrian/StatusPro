@@ -23,8 +23,8 @@
 
     <ImageView
         android:id="@id/exo_pause"
-        android:layout_width="21dp"
-        android:layout_height="27dp"
+        android:layout_width="36dp"
+        android:layout_height="22dp"
         android:background="@drawable/color_gray_trans_circle"
         android:src="@drawable/ic_pause_circle"
         android:tint="@color/colorWhite"
