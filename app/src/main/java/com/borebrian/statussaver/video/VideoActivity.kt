@@ -64,12 +64,15 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
 
         val imageFile = File(intent.getStringExtra("path"))
         var statusvideo=0;
+        var status2video:Int
+
         fabsharevideo.setOnClickListener(){
             Toast.makeText(this,"Please select app to share to",Toast.LENGTH_LONG).show()
             Utils.shareFile(this, imageFile)
         }
 
         fabvideo.setOnClickListener(){
+
             if(statusvideo==0 && imageFile.toString().contains("statusSaver")){
 
                 /*Toast.makeText(this,"Please select app to share to", Toast.LENGTH_LONG).show()*/
@@ -77,14 +80,13 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
                 deleteVideo.visibility=View.VISIBLE;
                 shareVideo.visibility=View.VISIBLE
                 fabvideo.setImageDrawable(resources.getDrawable(R.drawable.ic_close_black_24dp))
-                var status2video=statusvideo
+                status2video=statusvideo
                 statusvideo=status2video+1
             }
             else if (statusvideo==0 && imageFile.toString().contains("Statuses")){
                 deleteVideo.visibility=View.GONE;
                 shareVideo.visibility=View.VISIBLE;
                 downloadVideo.visibility=View.VISIBLE
-
                 fabvideo.setImageDrawable(resources.getDrawable(R.drawable.ic_add_black_24dp))
                 statusvideo=0
             }
@@ -92,7 +94,9 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
                 deleteVideo.visibility=View.GONE;
                 downloadVideo.visibility=View.GONE;
                 shareVideo.visibility=View.GONE;
-                statusvideo=0
+                status2video=0;
+                statusvideo=0;
+                fabvideo.setImageDrawable(resources.getDrawable(R.drawable.ic_add_black_24dp))
             }
 
 

@@ -79,7 +79,7 @@ class ImageViewActivity : AppCompatActivity() {
             intent.addCategory(Intent.CATEGORY_DEFAULT)
             intent.setDataAndType(Uri.fromFile(imageFile), "image/jpeg")
             intent.putExtra("mimeType", "image/jpeg")
-            this.startActivity(Intent.createChooser(intent, "Which app do you want to set wallpaper ?:"))
+            this.startActivity(Intent.createChooser(intent, ""))
         }
         fab4.setOnClickListener(){
             val fdelete =(imageFile)
