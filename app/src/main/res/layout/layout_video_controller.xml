@@ -32,7 +32,7 @@
         app:layout_constraintBottom_toBottomOf="parent"/>
 
 
-    <LinearLayout
+     <LinearLayout
         android:id="@+id/progress"
         android:layout_width="match_parent"
         android:layout_height="140dp"
