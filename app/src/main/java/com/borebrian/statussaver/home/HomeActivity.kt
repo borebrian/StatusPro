@@ -33,6 +33,7 @@ import com.borebrian.statussaver.utils.Utils.Companion.WHATSAPP_STATUSES_LOCATIO
 import com.borebrian.statussaver.utils.Utils.Companion.WHATSAPP_STATUSES_SAVED_LOCATION
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.InterstitialAd
+import com.google.android.gms.ads.MobileAds
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.content_home.*
@@ -104,13 +105,18 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setContentView(R.layout.activity_home)
         setSupportActionBar(toolbar)
 
+
+    /*    MobileAds.initialize(this) {}
+        mAdView = findViewById(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        adView.loadAd(adRequest*/
        /* MobileAds.initialize(this, getString(R.string.admob_app_id))*/
 
         //adView.adSize = AdSize.BANNER
         //adView.adUnitId = AD_UNIT_ID
 
         val adRequest = AdRequest.Builder().build()
-        adView.loadAd(adRequest)
+        abdView.loadAd(adRequest)
 
        /* mInterstitialAd = InterstitialAd(this)
         mInterstitialAd.adUnitId = getString(R.string.admob_interstitial_id)
