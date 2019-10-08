@@ -21,6 +21,7 @@ import android.app.WallpaperManager
 import android.net.Uri
 import android.support.v7.app.AlertDialog
 import com.borebrian.statussaver.home.HomeActivity
+import com.google.android.gms.ads.AdRequest
 
 
 class ImageViewActivity : AppCompatActivity() {
@@ -33,6 +34,13 @@ class ImageViewActivity : AppCompatActivity() {
         setContentView(R.layout.activity_image_view)
         setSupportActionBar(toolbar)
         var status=0
+
+
+        val adRequest = AdRequest.Builder().build()
+        abdView.loadAd(adRequest)
+
+
+
 
         download.visibility=View.GONE
         setas.visibility=View.GONE
