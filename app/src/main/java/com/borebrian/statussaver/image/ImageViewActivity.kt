@@ -37,7 +37,7 @@ class ImageViewActivity : AppCompatActivity() {
 
 
         val adRequest = AdRequest.Builder().build()
-        abdView.loadAd(adRequest)
+        addV.loadAd(adRequest)
 
 
 

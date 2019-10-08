@@ -9,20 +9,23 @@
     tools:context=".image.ImageViewActivity"
     tools:showIn="@layout/activity_image_view">
 
-    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/abdView"
-        android:layout_width="409dp"
-        android:layout_height="54dp"
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/addV"
+        android:layout_width="393dp"
+        android:layout_height="79dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp"
+        android:elevation="5dp"
         ads:adSize="BANNER"
         ads:adUnitId="ca-app-pub-3940256099942544/6300978111"
-        ads:layout_constraintBottom_toTopOf="@+id/navigation"
+        ads:layout_constraintBottom_toBottomOf="@+id/imageView"
         ads:layout_constraintEnd_toEndOf="parent"
-        ads:layout_constraintHorizontal_bias="0.428"
+        ads:layout_constraintHorizontal_bias="1.0"
         ads:layout_constraintStart_toStartOf="parent"
         ads:layout_constraintTop_toTopOf="parent"
-        ads:layout_constraintVertical_bias="0.0"
+        ads:layout_constraintVertical_bias="1.0"
         tools:ignore="MissingConstraints"></com.google.android.gms.ads.AdView>
 
     <ImageView
