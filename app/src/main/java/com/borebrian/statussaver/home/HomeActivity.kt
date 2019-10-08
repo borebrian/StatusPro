@@ -48,10 +48,9 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onClickDownload() {
 
-       /* if (mInterstitialAd.isLoaded) {
+        if (mInterstitialAd.isLoaded) {
             mInterstitialAd.show()
-        }*/
-
+        }
     }
 
     private lateinit var progress:MyProgress

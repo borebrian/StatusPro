@@ -9,6 +9,7 @@
     tools:context=".image.ImageViewActivity"
     tools:showIn="@layout/activity_image_view">
 
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
