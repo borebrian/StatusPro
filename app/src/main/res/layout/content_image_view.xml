@@ -18,7 +18,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="8dp"
         android:elevation="5dp"
-        ads:adSize="BANNER"
+        ads:adSize="LARGE_BANNER"
         ads:adUnitId="ca-app-pub-3940256099942544/6300978111"
         ads:layout_constraintBottom_toBottomOf="@+id/imageView"
         ads:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +39,7 @@
         android:transitionName="image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.306"
+        app:layout_constraintVertical_bias="0.0"
         tools:layout_editor_absoluteX="0dp" />
     >
 
