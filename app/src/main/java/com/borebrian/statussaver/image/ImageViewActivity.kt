@@ -43,12 +43,11 @@ class ImageViewActivity : AppCompatActivity() {
         setContentView(R.layout.activity_image_view)
         setSupportActionBar(toolbar)
         mInterstitialAd = InterstitialAd(this)
-
+        MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713")
+        MobileAds.initialize(this,"ca-app-pub-3940256099942544~3347511713");
         var status=0
 
-
-        showAdd()
-
+        showInterstitialAd()
 
 
         // Interstitial
@@ -58,8 +57,6 @@ class ImageViewActivity : AppCompatActivity() {
 */
         // Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713
 
-        MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713")
-        MobileAds.initialize(this,"ca-app-pub-3940256099942544~3347511713");
 
 
 
@@ -81,12 +78,13 @@ class ImageViewActivity : AppCompatActivity() {
 
 
         fab4.setOnClickListener(){
+
             val intent = Intent(Intent.ACTION_ATTACH_DATA)
             intent.addCategory(Intent.CATEGORY_DEFAULT)
             intent.setDataAndType(Uri.fromFile(imageFile), "image/jpeg")
             intent.putExtra("mimeType", "image/jpeg")
             this.startActivity(Intent.createChooser(intent, "Set as:"))
-            showAdd()
+            mInterstitialAd.show()
         }
 
 
@@ -112,6 +110,7 @@ class ImageViewActivity : AppCompatActivity() {
         fab1.setOnClickListener(){
             Toast.makeText(this,"Please select app to share to",Toast.LENGTH_LONG).show()
             Utils.shareFile(this, imageFile)
+            mInterstitialAd.show()
         }
 
         fab3.setOnClickListener(){
@@ -120,7 +119,7 @@ class ImageViewActivity : AppCompatActivity() {
             intent.setDataAndType(Uri.fromFile(imageFile), "image/jpeg")
             intent.putExtra("mimeType", "image/jpeg")
             this.startActivity(Intent.createChooser(intent, ""))
-            showAdd()
+            mInterstitialAd.show()
         }
         fab4.setOnClickListener(){
             showAdd()
@@ -129,16 +128,20 @@ class ImageViewActivity : AppCompatActivity() {
             {
                 if (fdelete.delete())
                 {
+                    mInterstitialAd.show()
                     Toast.makeText(this,"Status Deleted successfully from:"+imageFile,Toast.LENGTH_LONG).show()
                     val intent = Intent(this, HomeActivity::class.java)
                     startActivity(intent)
+
                 }
                 else
                 {
+                    mInterstitialAd.show()
                     Toast.makeText(this,"file was not deleted!!",Toast.LENGTH_LONG).show();
                 }
             }
             else{
+                mInterstitialAd.show()
                 Toast.makeText(this,"No file to delete",Toast.LENGTH_LONG).show()
                 finish()
             }
@@ -148,7 +151,7 @@ class ImageViewActivity : AppCompatActivity() {
         }
 
         fab.setOnClickListener(){
-            showAdd()
+
             if(status==0 && imageFile.toString().contains("statusSaver")){
 
                 /*Toast.makeText(this,"Please select app to share to", Toast.LENGTH_LONG).show()*/
@@ -159,6 +162,7 @@ class ImageViewActivity : AppCompatActivity() {
                 fab.setImageDrawable(resources.getDrawable(R.drawable.ic_close_black_24dp))
                 var status2=status
                 status=status2+1
+                mInterstitialAd.show()
             }
             else if(status==0 && imageFile.toString().contains("Statuses")){
                 sharestatus.visibility=View.VISIBLE;
@@ -168,6 +172,7 @@ class ImageViewActivity : AppCompatActivity() {
                 fab.setImageDrawable(resources.getDrawable(R.drawable.ic_close_black_24dp))
                 var status2=status
                 status=status2+1
+                mInterstitialAd.show()
 
             }
             else{
@@ -178,6 +183,7 @@ class ImageViewActivity : AppCompatActivity() {
                 fab.setImageDrawable(resources.getDrawable(R.drawable.ic_add_black_24dp))
                 var status2=status
                 status=0
+                mInterstitialAd.show()
             }
         }
     }
@@ -199,7 +205,7 @@ class ImageViewActivity : AppCompatActivity() {
     }
 
 
-    fun showInterstitialAd(view: View?) {
+    fun showInterstitialAd() {
         if (mInterstitialAd != null && mInterstitialAd.isLoaded) {
             mInterstitialAd.show()
         }
