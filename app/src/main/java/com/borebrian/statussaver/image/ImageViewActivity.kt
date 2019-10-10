@@ -22,6 +22,12 @@ import android.net.Uri
 import android.support.v7.app.AlertDialog
 import com.borebrian.statussaver.home.HomeActivity
 import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.doubleclick.PublisherInterstitialAd
+import com.google.android.gms.ads.InterstitialAd
+import com.google.android.gms.ads.MobileAds
+import android.R
+
+
 
 
 class ImageViewActivity : AppCompatActivity() {
@@ -31,13 +37,19 @@ class ImageViewActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_image_view)
+        setContentView(com.borebrian.statussaver.R.layout.activity_image_view)
         setSupportActionBar(toolbar)
         var status=0
 
 
-        val adRequest = AdRequest.Builder().build()
-        addV.loadAd(adRequest)
+
+        MobileAds.initialize(this, "ca-app-pub-4761500786576152~8215465788")
+        interstitialAd = InterstitialAd(this)
+        interstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712")
+        val request = AdRequest.Builder().build()
+        interstitialAd.loadAd(request)
+      /*  val adRequest = AdRequest.Builder().build()
+        addV.loadAd(adRequest)*/
 
 
 
@@ -57,8 +69,7 @@ class ImageViewActivity : AppCompatActivity() {
             this.startActivity(Intent.createChooser(intent, "Set as:"))
         }
 
-
-
+ 
 
 
 
