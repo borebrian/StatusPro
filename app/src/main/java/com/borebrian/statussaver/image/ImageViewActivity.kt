@@ -17,40 +17,64 @@ import kotlinx.android.synthetic.main.content_image_view.*
 import org.apache.commons.io.FileUtils
 import java.io.File
 import android.app.WallpaperManager
+import android.content.Context
 
 import android.net.Uri
 import android.support.v7.app.AlertDialog
 import com.borebrian.statussaver.home.HomeActivity
 import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.doubleclick.PublisherInterstitialAd
+import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.InterstitialAd
 import com.google.android.gms.ads.MobileAds
-import android.R
-
-
+import com.google.android.gms.ads.reward.RewardedVideoAd
 
 
 class ImageViewActivity : AppCompatActivity() {
+    lateinit var context: Context
+    lateinit var mAdView: AdView
+    private lateinit var mInterstitialAd: InterstitialAd
+    private lateinit var mRewardedVideoAd: RewardedVideoAd
 
     private var mScaleGestureDetector: ScaleGestureDetector? = null
     private var mScaleFactor = 1.0f
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(com.borebrian.statussaver.R.layout.activity_image_view)
+        setContentView(R.layout.activity_image_view)
         setSupportActionBar(toolbar)
         var status=0
 
 
 
-        MobileAds.initialize(this, "ca-app-pub-4761500786576152~8215465788")
-        interstitialAd = InterstitialAd(this)
-        interstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712")
-        val request = AdRequest.Builder().build()
-        interstitialAd.loadAd(request)
-      /*  val adRequest = AdRequest.Builder().build()
-        addV.loadAd(adRequest)*/
+        // Interstitial
+        mInterstitialAd = InterstitialAd(this)
+      /*  mInterstitialAd.adUnitId = "ca-app-pub-7643266345625929/3567501731"
+        mInterstitialAd.loadAd(AdRequest.Builder().build())
+        mInterstitialAd.show()
+*/
+        // Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713
 
+        MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713")
+        MobileAds.initialize(this,"ca-app-pub-3940256099942544~3347511713");
+
+        mInterstitialAd = InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.loadAd(AdRequest.Builder().build());
+
+
+        textView3.setOnClickListener(){
+            if (mInterstitialAd.isLoaded()) {
+                mInterstitialAd.show();
+            }
+            else{
+                Toast.makeText(this,"Not loaded",Toast.LENGTH_LONG).show()
+            }
+        }
+
+
+        /*  val adRequest = AdRequest.Builder().build()
+          addV.loadAd(adRequest)
+  */
 
 
 
@@ -69,7 +93,8 @@ class ImageViewActivity : AppCompatActivity() {
             this.startActivity(Intent.createChooser(intent, "Set as:"))
         }
 
- 
+
+
 
 
 
@@ -158,12 +183,20 @@ class ImageViewActivity : AppCompatActivity() {
         }
     }
 
+    fun showInterstitialAd(view: View?) {
+        if (mInterstitialAd != null && mInterstitialAd.isLoaded) {
+            mInterstitialAd.show()
+        }}
+
+
+
 
 
     override fun onTouchEvent(motionEvent: MotionEvent): Boolean {
         mScaleGestureDetector?.onTouchEvent(motionEvent)
         return true
     }
+
 
 
     private inner class ScaleListener : ScaleGestureDetector.SimpleOnScaleGestureListener() {
