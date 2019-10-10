@@ -43,11 +43,14 @@ class ImageViewActivity : AppCompatActivity() {
         setContentView(R.layout.activity_image_view)
         setSupportActionBar(toolbar)
         mInterstitialAd = InterstitialAd(this)
+        mInterstitialAd.adUnitId = "ca-app-pub-3940256099942544/1033173712";
+        mInterstitialAd.loadAd(AdRequest.Builder().build());
+
         MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713")
         MobileAds.initialize(this,"ca-app-pub-3940256099942544~3347511713");
         var status=0
-
         showInterstitialAd()
+
 
 
         // Interstitial
@@ -64,9 +67,8 @@ class ImageViewActivity : AppCompatActivity() {
 
 
 
-        /*  val adRequest = AdRequest.Builder().build()
+          val adRequest = AdRequest.Builder().build()
           addV.loadAd(adRequest)
-  */
 
 
 
@@ -84,7 +86,8 @@ class ImageViewActivity : AppCompatActivity() {
             intent.setDataAndType(Uri.fromFile(imageFile), "image/jpeg")
             intent.putExtra("mimeType", "image/jpeg")
             this.startActivity(Intent.createChooser(intent, "Set as:"))
-            mInterstitialAd.show()
+            showInterstitialAd()
+
         }
 
 
@@ -110,7 +113,7 @@ class ImageViewActivity : AppCompatActivity() {
         fab1.setOnClickListener(){
             Toast.makeText(this,"Please select app to share to",Toast.LENGTH_LONG).show()
             Utils.shareFile(this, imageFile)
-            mInterstitialAd.show()
+            showInterstitialAd()
         }
 
         fab3.setOnClickListener(){
@@ -119,7 +122,8 @@ class ImageViewActivity : AppCompatActivity() {
             intent.setDataAndType(Uri.fromFile(imageFile), "image/jpeg")
             intent.putExtra("mimeType", "image/jpeg")
             this.startActivity(Intent.createChooser(intent, ""))
-            mInterstitialAd.show()
+            showInterstitialAd()
+
         }
         fab4.setOnClickListener(){
             showAdd()
@@ -128,7 +132,8 @@ class ImageViewActivity : AppCompatActivity() {
             {
                 if (fdelete.delete())
                 {
-                    mInterstitialAd.show()
+                    showInterstitialAd()
+
                     Toast.makeText(this,"Status Deleted successfully from:"+imageFile,Toast.LENGTH_LONG).show()
                     val intent = Intent(this, HomeActivity::class.java)
                     startActivity(intent)
@@ -136,12 +141,13 @@ class ImageViewActivity : AppCompatActivity() {
                 }
                 else
                 {
-                    mInterstitialAd.show()
+                    showInterstitialAd()
+
                     Toast.makeText(this,"file was not deleted!!",Toast.LENGTH_LONG).show();
                 }
             }
             else{
-                mInterstitialAd.show()
+                showInterstitialAd()
                 Toast.makeText(this,"No file to delete",Toast.LENGTH_LONG).show()
                 finish()
             }
@@ -213,8 +219,18 @@ class ImageViewActivity : AppCompatActivity() {
             mInterstitialAd = InterstitialAd(this);
             mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
             mInterstitialAd.loadAd(AdRequest.Builder().build());
-            mInterstitialAd.show()
+            call()
+
         }}
+    fun call(){
+        if (mInterstitialAd != null && mInterstitialAd.isLoaded) {
+            mInterstitialAd.show()
+            
+        }
+
+
+    }
+
 
 
 
