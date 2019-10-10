@@ -36,13 +36,6 @@ import java.io.File
 
 class VideoActivity : AppCompatActivity(), Player.EventListener {
 
-
-
-    lateinit var context: Context
-    lateinit var mAdView: AdView
-    private lateinit var mInterstitialAd: InterstitialAd
-    private lateinit var mRewardedVideoAd: RewardedVideoAd
-
     private val mHideHandler = Handler()
     @SuppressLint("InlinedApi")
     private val mHidePart2Runnable = Runnable {
@@ -67,18 +60,20 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
     private var mVisible: Boolean = false
     private val mHideRunnable = Runnable { hide() }
 
+    lateinit var context: Context
+    lateinit var mAdView: AdView
+    private lateinit var mInterstitialAd: InterstitialAd
+    private lateinit var mRewardedVideoAd: RewardedVideoAd
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_video)
-
-
-
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         downloadVideo.visibility=View.GONE
         deleteVideo.visibility=View.GONE
         shareVideo.visibility=View.GONE
-        showInterstitialAd()
 
 
         val adRequest = AdRequest.Builder().build()
@@ -91,11 +86,9 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
         fabsharevideo.setOnClickListener(){
             Toast.makeText(this,"Please select app to share to",Toast.LENGTH_LONG).show()
             Utils.shareFile(this, imageFile)
-            showInterstitialAd()
         }
 
         fabvideo.setOnClickListener(){
-            showInterstitialAd()
 
             if(statusvideo==0 && imageFile.toString().contains("statusSaver")){
 
@@ -108,7 +101,6 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
                 statusvideo=1
             }
             else if (statusvideo==0 && imageFile.toString().contains("Statuses")){
-                showInterstitialAd()
                 deleteVideo.visibility=View.GONE;
                 shareVideo.visibility=View.VISIBLE;
                 downloadVideo.visibility=View.VISIBLE
@@ -116,7 +108,6 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
                 statusvideo=1
             }
             else if(statusvideo==1){
-                showInterstitialAd()
                 deleteVideo.visibility=View.GONE;
                 downloadVideo.visibility=View.GONE;
                 shareVideo.visibility=View.GONE
@@ -147,16 +138,12 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
           /*Toast.makeText(this,imageFile.toString(),Toast.LENGTH_LONG).show()*/
 
         fab2video.setOnClickListener(){
-            showInterstitialAd()
             val destFile = File("${Environment.getExternalStorageDirectory()}${Utils.WHATSAPP_STATUSES_SAVED_LOCATION}/${imageFile.name}")
             FileUtils.copyFile(imageFile, destFile)
             Utils.addToGallery(this, destFile)
-
             Toast.makeText(this,"Video stored in gallery", Toast.LENGTH_SHORT).show()
-
         }
         deletevideo.setOnClickListener(){
-            showInterstitialAd()
             val fdelete =(imageFile)
             if (fdelete.exists())
             {
@@ -199,6 +186,7 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
 
     }
 
+
     fun showInterstitialAd() {
         if (mInterstitialAd != null && mInterstitialAd.isLoaded) {
             mInterstitialAd.show()
@@ -218,6 +206,8 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
 
 
     }
+
+
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
