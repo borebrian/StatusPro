@@ -1,6 +1,7 @@
 package com.borebrian.statussaver.video
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -21,13 +22,26 @@ import com.google.android.exoplayer2.util.Util
 import com.borebrian.statussaver.R
 import com.borebrian.statussaver.home.HomeActivity
 import com.borebrian.statussaver.utils.Utils
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.InterstitialAd
+import com.google.android.gms.ads.reward.RewardedVideoAd
 import kotlinx.android.synthetic.main.activity_video.*
 import kotlinx.android.synthetic.main.content_image_view.*
+import kotlinx.android.synthetic.main.content_image_view.addV
+import kotlinx.android.synthetic.main.layout_video_controller.*
 import org.apache.commons.io.FileUtils
 import java.io.File
 
 
 class VideoActivity : AppCompatActivity(), Player.EventListener {
+
+
+
+    lateinit var context: Context
+    lateinit var mAdView: AdView
+    private lateinit var mInterstitialAd: InterstitialAd
+    private lateinit var mRewardedVideoAd: RewardedVideoAd
 
     private val mHideHandler = Handler()
     @SuppressLint("InlinedApi")
@@ -57,10 +71,18 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_video)
+
+
+
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         downloadVideo.visibility=View.GONE
         deleteVideo.visibility=View.GONE
         shareVideo.visibility=View.GONE
+        showInterstitialAd()
+
+
+        val adRequest = AdRequest.Builder().build()
+        addV.loadAd(adRequest)
 
         val imageFile = File(intent.getStringExtra("path"))
         var statusvideo=0;
@@ -69,9 +91,11 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
         fabsharevideo.setOnClickListener(){
             Toast.makeText(this,"Please select app to share to",Toast.LENGTH_LONG).show()
             Utils.shareFile(this, imageFile)
+            showInterstitialAd()
         }
 
         fabvideo.setOnClickListener(){
+            showInterstitialAd()
 
             if(statusvideo==0 && imageFile.toString().contains("statusSaver")){
 
@@ -84,6 +108,7 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
                 statusvideo=1
             }
             else if (statusvideo==0 && imageFile.toString().contains("Statuses")){
+                showInterstitialAd()
                 deleteVideo.visibility=View.GONE;
                 shareVideo.visibility=View.VISIBLE;
                 downloadVideo.visibility=View.VISIBLE
@@ -91,6 +116,7 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
                 statusvideo=1
             }
             else if(statusvideo==1){
+                showInterstitialAd()
                 deleteVideo.visibility=View.GONE;
                 downloadVideo.visibility=View.GONE;
                 shareVideo.visibility=View.GONE
@@ -121,12 +147,16 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
           /*Toast.makeText(this,imageFile.toString(),Toast.LENGTH_LONG).show()*/
 
         fab2video.setOnClickListener(){
+            showInterstitialAd()
             val destFile = File("${Environment.getExternalStorageDirectory()}${Utils.WHATSAPP_STATUSES_SAVED_LOCATION}/${imageFile.name}")
             FileUtils.copyFile(imageFile, destFile)
             Utils.addToGallery(this, destFile)
+
             Toast.makeText(this,"Video stored in gallery", Toast.LENGTH_SHORT).show()
+
         }
         deletevideo.setOnClickListener(){
+            showInterstitialAd()
             val fdelete =(imageFile)
             if (fdelete.exists())
             {
@@ -165,6 +195,26 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
         // dummy_button.setOnTouchListener(mDelayHideTouchListener)
+
+
+    }
+
+    fun showInterstitialAd() {
+        if (mInterstitialAd != null && mInterstitialAd.isLoaded) {
+            mInterstitialAd.show()
+        }
+        else{
+            mInterstitialAd = InterstitialAd(this);
+            mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+            mInterstitialAd.loadAd(AdRequest.Builder().build());
+            call()
+
+        }}
+    fun call(){
+        if (mInterstitialAd != null && mInterstitialAd.isLoaded) {
+            mInterstitialAd.show()
+
+        }
 
 
     }
