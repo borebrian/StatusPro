@@ -109,10 +109,17 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var mRewardedVideoAd: RewardedVideoAd
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         setSupportActionBar(toolbar)
+        mInterstitialAd = InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.loadAd(AdRequest.Builder().build());
+        call()
+
+
 
 
     /*    MobileAds.initialize(this) {}
@@ -162,6 +169,25 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
 
         FetchFilesTask(this).execute(TYPE_IMAGE)
+
+    }
+    fun showInterstitialAd() {
+        if (mInterstitialAd != null && mInterstitialAd.isLoaded) {
+            mInterstitialAd.show()
+        }
+        else{
+            mInterstitialAd = InterstitialAd(this);
+            mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+            mInterstitialAd.loadAd(AdRequest.Builder().build());
+            call()
+
+        }}
+    fun call(){
+        if (mInterstitialAd != null && mInterstitialAd.isLoaded) {
+            mInterstitialAd.show()
+
+        }
+
 
     }
 
@@ -226,6 +252,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
             drawer_layout.closeDrawer(GravityCompat.START)
+            showInterstitialAd()
 
         } else {
             val builder = AlertDialog.Builder(this)
@@ -244,6 +271,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
             }
             builder.setNegativeButton("No") { dialog, which ->
+                showInterstitialAd()
 
             }
 

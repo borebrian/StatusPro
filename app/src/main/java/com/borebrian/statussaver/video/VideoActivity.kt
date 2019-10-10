@@ -65,16 +65,23 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
     private lateinit var mInterstitialAd: InterstitialAd
     private lateinit var mRewardedVideoAd: RewardedVideoAd
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_video)
+
+
+        mInterstitialAd = InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.loadAd(AdRequest.Builder().build());
+
+
+        
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         downloadVideo.visibility=View.GONE
         deleteVideo.visibility=View.GONE
         shareVideo.visibility=View.GONE
-
+        showInterstitialAd()
 
         val adRequest = AdRequest.Builder().build()
         addV.loadAd(adRequest)
@@ -84,12 +91,13 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
         var status2video:Int
 
         fabsharevideo.setOnClickListener(){
+            showInterstitialAd()
             Toast.makeText(this,"Please select app to share to",Toast.LENGTH_LONG).show()
             Utils.shareFile(this, imageFile)
         }
 
         fabvideo.setOnClickListener(){
-
+            showInterstitialAd()
             if(statusvideo==0 && imageFile.toString().contains("statusSaver")){
 
                 /*Toast.makeText(this,"Please select app to share to", Toast.LENGTH_LONG).show()*/
@@ -185,8 +193,6 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
 
 
     }
-
-
     fun showInterstitialAd() {
         if (mInterstitialAd != null && mInterstitialAd.isLoaded) {
             mInterstitialAd.show()
