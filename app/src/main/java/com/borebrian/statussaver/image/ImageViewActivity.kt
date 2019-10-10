@@ -43,6 +43,7 @@ class ImageViewActivity : AppCompatActivity() {
         setContentView(R.layout.activity_image_view)
         setSupportActionBar(toolbar)
         var status=0
+        showAdd()
 
 
 
@@ -62,14 +63,7 @@ class ImageViewActivity : AppCompatActivity() {
         mInterstitialAd.loadAd(AdRequest.Builder().build());
 
 
-        textView3.setOnClickListener(){
-            if (mInterstitialAd.isLoaded()) {
-                mInterstitialAd.show();
-            }
-            else{
-                Toast.makeText(this,"Not loaded",Toast.LENGTH_LONG).show()
-            }
-        }
+
 
 
         /*  val adRequest = AdRequest.Builder().build()
@@ -91,6 +85,7 @@ class ImageViewActivity : AppCompatActivity() {
             intent.setDataAndType(Uri.fromFile(imageFile), "image/jpeg")
             intent.putExtra("mimeType", "image/jpeg")
             this.startActivity(Intent.createChooser(intent, "Set as:"))
+            showAdd()
         }
 
 
@@ -124,8 +119,10 @@ class ImageViewActivity : AppCompatActivity() {
             intent.setDataAndType(Uri.fromFile(imageFile), "image/jpeg")
             intent.putExtra("mimeType", "image/jpeg")
             this.startActivity(Intent.createChooser(intent, ""))
+            showAdd()
         }
         fab4.setOnClickListener(){
+            showAdd()
             val fdelete =(imageFile)
             if (fdelete.exists())
             {
@@ -150,6 +147,7 @@ class ImageViewActivity : AppCompatActivity() {
         }
 
         fab.setOnClickListener(){
+            showAdd()
             if(status==0 && imageFile.toString().contains("statusSaver")){
 
                 /*Toast.makeText(this,"Please select app to share to", Toast.LENGTH_LONG).show()*/
@@ -182,11 +180,30 @@ class ImageViewActivity : AppCompatActivity() {
             }
         }
     }
+    fun showAdd(){
+        if (mInterstitialAd.isLoaded()) {
+            mInterstitialAd.show();
+        }
+        else{
+            Toast.makeText(this,"Not loaded",Toast.LENGTH_LONG).show()
+            mInterstitialAd = InterstitialAd(this);
+            mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+            mInterstitialAd.loadAd(AdRequest.Builder().build());
+            mInterstitialAd.show()
+        }
+    }
 
     fun showInterstitialAd(view: View?) {
         if (mInterstitialAd != null && mInterstitialAd.isLoaded) {
             mInterstitialAd.show()
+        }
+    else{
+            mInterstitialAd = InterstitialAd(this);
+            mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+            mInterstitialAd.loadAd(AdRequest.Builder().build());
+            mInterstitialAd.show()
         }}
+
 
 
 
