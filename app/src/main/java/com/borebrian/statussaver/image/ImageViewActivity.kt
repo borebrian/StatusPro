@@ -42,13 +42,16 @@ class ImageViewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_image_view)
         setSupportActionBar(toolbar)
+        mInterstitialAd = InterstitialAd(this)
+
         var status=0
+
+
         showAdd()
 
 
 
         // Interstitial
-        mInterstitialAd = InterstitialAd(this)
       /*  mInterstitialAd.adUnitId = "ca-app-pub-7643266345625929/3567501731"
         mInterstitialAd.loadAd(AdRequest.Builder().build())
         mInterstitialAd.show()
@@ -58,9 +61,7 @@ class ImageViewActivity : AppCompatActivity() {
         MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713")
         MobileAds.initialize(this,"ca-app-pub-3940256099942544~3347511713");
 
-        mInterstitialAd = InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
-        mInterstitialAd.loadAd(AdRequest.Builder().build());
+
 
 
 
@@ -181,17 +182,22 @@ class ImageViewActivity : AppCompatActivity() {
         }
     }
     fun showAdd(){
-        if (mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
-        }
-        else{
-            Toast.makeText(this,"Not loaded",Toast.LENGTH_LONG).show()
-            mInterstitialAd = InterstitialAd(this);
-            mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
-            mInterstitialAd.loadAd(AdRequest.Builder().build());
-            mInterstitialAd.show()
-        }
+        /* if (mInterstitialAd.isLoaded()) {*/
+        mInterstitialAd = InterstitialAd(this);
+        mInterstitialAd.adUnitId = "ca-app-pub-3940256099942544/1033173712";
+        mInterstitialAd.loadAd(AdRequest.Builder().build());
+        mInterstitialAd.show()
+
+        /* }
+         else{*/
+        /*  Toast.makeText(this,"Not loaded",Toast.LENGTH_LONG).show()
+          mInterstitialAd = InterstitialAd(this);
+          mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+          mInterstitialAd.loadAd(AdRequest.Builder().build());
+          mInterstitialAd.show()*/
+
     }
+
 
     fun showInterstitialAd(view: View?) {
         if (mInterstitialAd != null && mInterstitialAd.isLoaded) {
